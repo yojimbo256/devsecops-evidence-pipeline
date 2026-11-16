@@ -1,0 +1,4 @@
+[
+  {"RuleID": "aws-access-token", "Description": "AWS Access Key", "File": "scripts/deploy.sh",
+   "StartLine": 5, "Secret": "EXAMPLE_SECRET_VALUE_1234", "Match": "key=EXAMPLE_SECRET_VALUE_1234"}
+]

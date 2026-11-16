@@ -1,0 +1,13 @@
+{
+  "dependencies": [
+    {"name": "requests", "version": "2.19.0", "vulns": [
+      {"id": "PYSEC-2018-28", "fix_versions": ["2.20.0"], "aliases": ["CVE-2018-18074"],
+       "description": "Authorization header leaked on redirect to a different host."}
+    ]},
+    {"name": "flask", "version": "3.0.0", "vulns": []},
+    {"name": "pyyaml", "version": "5.3", "vulns": [
+      {"id": "PYSEC-2020-176", "fix_versions": [], "aliases": ["CVE-2020-14343"],
+       "description": "Arbitrary code execution when loading untrusted YAML."}
+    ]}
+  ]
+}

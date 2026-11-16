@@ -1,0 +1,16 @@
+{
+  "Results": [
+    {"Target": "evidence-demo (debian 12.7)", "Vulnerabilities": [
+      {"VulnerabilityID": "CVE-2024-0001", "PkgName": "libexample", "InstalledVersion": "1.0",
+       "FixedVersion": "1.1", "Severity": "CRITICAL", "Title": "Example critical flaw in libexample"},
+      {"VulnerabilityID": "CVE-2024-0002", "PkgName": "libother", "InstalledVersion": "2.0",
+       "Severity": "UNKNOWN", "Title": "Severity not assigned yet"}
+    ]},
+    {"Target": "Dockerfile", "Misconfigurations": [
+      {"ID": "DS002", "Title": "Image user should not be 'root'", "Severity": "HIGH",
+       "Description": "Running as root increases the impact of a container breakout.",
+       "Resolution": "Add a USER instruction with a non-root user."}
+    ]},
+    {"Target": "clean-layer"}
+  ]
+}

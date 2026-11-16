@@ -1,0 +1,17 @@
+{
+  "results": [
+    {"test_id": "B105", "test_name": "hardcoded_password_string", "issue_severity": "LOW",
+     "issue_confidence": "MEDIUM", "issue_text": "Possible hardcoded password: 'hunter2'",
+     "filename": "app/config.py", "line_number": 12},
+    {"test_id": "B608", "test_name": "hardcoded_sql_expressions", "issue_severity": "MEDIUM",
+     "issue_confidence": "LOW", "issue_text": "Possible SQL injection via string-based query construction.",
+     "filename": "app/db.py", "line_number": 40},
+    {"test_id": "B602", "test_name": "subprocess_popen_with_shell_equals_true", "issue_severity": "HIGH",
+     "issue_confidence": "HIGH", "issue_text": "subprocess call with shell=True identified, security issue.",
+     "filename": "app/run.py", "line_number": 7},
+    {"test_id": "B999", "test_name": "made_up_rule", "issue_severity": "LOW",
+     "issue_confidence": "LOW", "issue_text": "Rule with no explicit control mapping.",
+     "filename": "app/misc.py", "line_number": 3}
+  ],
+  "metrics": {}
+}

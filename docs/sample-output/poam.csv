@@ -1,0 +1,11 @@
+POAM ID,Controls,Weakness Name,Weakness Description,Source,Severity,Resource / Location,Detected,Scheduled Completion,Milestone,Status
+POAM-3F7824B8,RA-5; SI-2,libexample 1.0: CVE-2024-0001,Example critical flaw in libexample,trivy,critical,evidence-demo (debian 12.7) (libexample),2026-11-16,2026-12-01,Upgrade to 1.1,Open
+POAM-52F9EBDC,SI-10,subprocess_popen_with_shell_equals_true (B602),"subprocess call with shell=True identified, security issue.",bandit,high,app/run.py:7,2026-11-16,2026-12-16,Triage and remediate,Open
+POAM-1874CF65,IA-5; SA-11,Possible secret: aws-access-token,AWS Access Key,gitleaks,high,scripts/deploy.sh:5,2026-11-16,2026-12-16,"Rotate the credential, remove it from history, and load it from a secret store.",Open
+POAM-35A8FA91,RA-5; SI-2,requests 2.19.0: PYSEC-2018-28,Authorization header leaked on redirect to a different host.,pip-audit,high,requests==2.19.0,2026-11-16,2026-12-16,Upgrade to 2.20.0,Open
+POAM-2E341217,RA-5; SI-2,pyyaml 5.3: PYSEC-2020-176,Arbitrary code execution when loading untrusted YAML.,pip-audit,high,pyyaml==5.3,2026-11-16,2026-12-16,Triage and remediate,Open
+POAM-47B520A9,CM-6,Image user should not be 'root',Running as root increases the impact of a container breakout.,trivy,high,Dockerfile,2026-11-16,2026-12-16,Add a USER instruction with a non-root user.,Open
+POAM-82EAEDE5,SI-10,hardcoded_sql_expressions (B608),Possible SQL injection via string-based query construction.,bandit,medium,app/db.py:40,2026-11-16,2027-02-14,Triage and remediate,Open
+POAM-793B0A29,IA-5,hardcoded_password_string (B105),Possible hardcoded password: 'hunter2',bandit,low,app/config.py:12,2026-11-16,2027-05-15,Triage and remediate,Open
+POAM-8B4D2C7D,SA-11,made_up_rule (B999),Rule with no explicit control mapping.,bandit,low,app/misc.py:3,2026-11-16,2027-05-15,Triage and remediate,Open
+POAM-35ADF266,RA-5; SI-2,libother 2.0: CVE-2024-0002,Severity not assigned yet,trivy,low,evidence-demo (debian 12.7) (libother),2026-11-16,2027-05-15,Triage and remediate,Open
