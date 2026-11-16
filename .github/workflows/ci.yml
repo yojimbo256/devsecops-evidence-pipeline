@@ -1,0 +1,61 @@
+name: security-pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-test-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Unit tests
+        run: python -m pytest -q
+
+      - name: Static analysis (Bandit)
+        run: |
+          mkdir -p reports
+          bandit -r app evidence -f json -o reports/bandit.json || true
+
+      - name: Dependency audit (pip-audit)
+        run: pip-audit -r requirements.txt -f json -o reports/pip-audit.json || true
+
+      - name: Build container image
+        run: docker build -t evidence-demo:ci .
+
+      - name: Image scan (Trivy)
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: evidence-demo:ci
+          format: json
+          output: reports/trivy.json
+          exit-code: "0"
+
+      - name: Build POA&M evidence and gate on severity
+        run: |
+          python -m evidence \
+            --bandit reports/bandit.json \
+            --pip-audit reports/pip-audit.json \
+            --trivy reports/trivy.json \
+            --out reports/evidence \
+            --fail-on critical
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-reports
+          path: reports/
